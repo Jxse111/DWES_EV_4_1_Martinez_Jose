@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['usuario']) || $_SESSION['rol'] != "invitado") {
+    session_destroy();
     header("location:login.html");
 } else {
     echo nl2br("Bienvenido " . $_SESSION['usuario'] . ", " . $_SESSION['rol']);

@@ -3,6 +3,7 @@ session_start();
 $mensajeExito = "Listado mensajes de exito: ";
 $mensajeError = "Listado de mensajes de error: ";
 if (!isset($_SESSION['usuario']) || $_SESSION['rol'] != "usuario") {
+    session_destroy();
     header("location:login.html");
 } else {
     echo nl2br("Bienvenido " . $_SESSION['usuario'] . ", " . $_SESSION['rol'] . ".\n");
@@ -62,7 +63,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] != "usuario") {
             include_once './cerrarSesion.html';
         }
         ?>
-             <h2>Lista de mensajes:</h2>
+        <h2>Lista de mensajes:</h2>
         <ul>
             <li><?php echo $mensajeExito; ?></li>
             <li><?php echo $mensajeError; ?></li>
